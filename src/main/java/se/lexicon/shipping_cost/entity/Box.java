@@ -15,8 +15,7 @@ import java.time.LocalDateTime;
 public class Box {
     @Id
     @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIBGenerator")
-    @Column(nullable = false, updatable = false)
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
     @Column(nullable = false, length = 100)
@@ -38,10 +37,9 @@ public class Box {
     private String weightType;
 
     @CreationTimestamp
-    @Column(nullable = false, columnDefinition = "TimesTamp default Current_TimeStamp")
+    @Column(nullable = false, columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
     private LocalDateTime createDate;
 
-    @CreationTimestamp()
     @Column(nullable = false, columnDefinition = "tinyint(1) default 1")
     private boolean status;
 }
