@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"xmlns:th="http://www.thymeleaf.org" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Box Form</title>
@@ -9,6 +9,71 @@
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </head>
 <body>
-Box Form
+
+<div class="container">
+    <div class="card">
+        <div class="card-header card-bg-dark text-white">
+            <h2>Add Form</h2>
+        </div>
+    </div>
+    <div class="card-body">
+        <form th:action="@{/shipping/add}" method="post" th:object="${box}">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" th:field="*{name}" placeholder="Enter Name Here..." class="form-control"/>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="form-check-inline">
+                        <label class="form-check-label">Letter</label>
+                        <input type="radio" class="form-check-input" value="letter" th:field="*{type}">
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label">Packet</label>
+                        <input type="radio" class="form-check-input" value="packet" th:field="*{type}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Weight</label>
+                    <input type="number" class="form-control" th:field="*{weight}"/>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Weight Type</label>
+                    <select class="form-control" th:field="*{weightType}">
+                        <option value=""></option>
+                        <option value="kg">KG</option>
+                        <option value="g">G</option>
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <label>Country</label>
+                    <select class="form-control" th:field="*{country}">
+                        <option value=""></option>
+                        <option value="sweden">Sweden</option>
+                        <option value="australia">Australia</option>
+                    </select>
+
+                </div>
+                <hr/>
+                <button type="submit" class="btn btn-primary btn-block mb-3">Save</button>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-outline-danger">Back</button>
+    </div>
+</div>
+
+</div>
+</div>
+
 </body>
 </html>

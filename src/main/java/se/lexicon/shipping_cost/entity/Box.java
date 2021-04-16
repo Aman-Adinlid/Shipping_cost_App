@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Data
@@ -34,6 +35,7 @@ public class Box {
     private double weight;
 
     @Column(nullable = false, length = 50)
+    @NotBlank(message = "weighType should not be empty")
     private String weightType;
 
     @CreationTimestamp
