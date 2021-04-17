@@ -39,10 +39,10 @@ public class ShippingController {
 
     @GetMapping("/")
     public String getAll(Model model) {
-        List<Box>boxes = new ArrayList<>();
+        List<Box> boxes = new ArrayList<>();
         Iterator<Box> iterator = boxRepository.findAll().iterator();
         iterator.forEachRemaining(boxes::add);
-        model.addAttribute("boxes",boxes);
+        model.addAttribute("boxes", boxes);
         return "showBoxList";
     }
 
@@ -53,8 +53,8 @@ public class ShippingController {
             return "addBoxForm";
         }
         boxRepository.save(box);//send data to db
-        redirectAttributes.addFlashAttribute("message","Operations is done");
-        redirectAttributes.addFlashAttribute("alertClass","alert-successes");
+        redirectAttributes.addFlashAttribute("message", "Operations is done");
+        redirectAttributes.addFlashAttribute("alertClass", "alert-successes");
 
         return "redirect:/shipping/";
 
