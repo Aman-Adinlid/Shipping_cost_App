@@ -3,6 +3,7 @@ package se.lexicon.shipping_cost.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,8 +39,16 @@ public class ShippingController {
     }
 
     @PostMapping("/add")
-    public String addBox(@ModelAttribute("box") @Valid Box box) {
+    public String addBox(@ModelAttribute("box") @Valid Box box, BindingResult bindingResult) {
         System.out.println("box = " + box);
-        return "addBoxForm";
+        if (bindingResult.hasErrors()) {
+            return "addBoxForm";
+        }
+        return "redirect:/shipping/";
+
     }
 }
+
+
+
+
